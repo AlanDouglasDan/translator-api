@@ -4,9 +4,10 @@ const routes = require("./routes/routes");
 const app = express();
 const port = process.env.PORT || 8000;
 
-app.use("/translate", routes); 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use("/translate", routes); 
 
 app.get("/", (req, res) => {
     res.send("Alan's translator api");

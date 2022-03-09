@@ -4,7 +4,7 @@ const translate = require('translation-google');
 const router = Router();
 
 router.get("/", (req, res) => {
-    const text = 'Good Morning Mr Bryan... i was doing some research and i found a service we can use to handle our language translate feature and this one is free, so we dont necessarily need to use the google-cloud-translate and pay a subscription';
+    const text = 'I told you to use a POST request you are using GET';
 
     translate(text, {from: 'en', to: 'yo'}).then(result => {
         console.log(result.text);
@@ -18,11 +18,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    // const { text, from, to } = req.body;
-    const text = req.body.text;
-    const from = req.body.from;
-    const to = req.body.to;
-
+    const { text, from, to } = req.body;
+    
     translate(text, { from, to }).then(result => {
         res.status(200).json(result);
     }).catch(err => {
