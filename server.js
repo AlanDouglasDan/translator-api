@@ -8,6 +8,10 @@ app.use("/translate", routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("Alan's translator api");
+});
+
 const server = app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });

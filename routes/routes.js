@@ -18,7 +18,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    const { text, from, to } = req.body;
+    // const { text, from, to } = req.body;
+    const text = req.body.text;
+    const from = req.body.from;
+    const to = req.body.to;
 
     translate(text, { from, to }).then(result => {
         res.status(200).json(result);
