@@ -1,11 +1,12 @@
-var translate = require('translation-google');
- 
-const text = 'Good Morning Mr Bryan... i was doing some research and i found a service we can use to handle our language translate feature and this one is free, so we dont necessarily need to use the google-cloud-translate and pay a subscription';
+const express = require("express");
+const routes = require("./routes/routes");
 
-translate(text, {to: 'yo'}).then(res => {
-    console.log(res.text);
+const app = express();
+const port = 8000;
 
-    console.log(res.from.language.iso);
-}).catch(err => {
-    console.error(err);
-});
+app.use("/translate", routes); 
+app.use(express.json());
+
+const server = app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+})
